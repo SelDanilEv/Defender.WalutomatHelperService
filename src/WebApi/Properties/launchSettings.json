@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "WebUI": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "DockerDev"
+      },
+      "applicationUrl": "https://localhost:0000"
+    }
+  }
+}
