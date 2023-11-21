@@ -1,4 +1,4 @@
-﻿namespace Defender.ServiceTemplate.Application.Configuration.Options;
+﻿namespace Defender.WalutomatHelperService.Application.Configuration.Options;
 
 public class ServiceOptions
 {

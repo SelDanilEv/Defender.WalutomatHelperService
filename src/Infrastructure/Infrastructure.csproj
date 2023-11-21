@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>Defender.ServiceTemplate.Infrastructure</RootNamespace>
-        <AssemblyName>Defender.ServiceTemplate.Infrastructure</AssemblyName>
+        <RootNamespace>Defender.WalutomatHelperService.Infrastructure</RootNamespace>
+        <AssemblyName>Defender.WalutomatHelperService.Infrastructure</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>

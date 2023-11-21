@@ -1,8 +1,8 @@
-docker rm -f ServiceTemplate
-docker build . -t service-template && ^
-docker run -d --name ServiceTemplate -p 0000:80 ^
+docker rm -f WalutomatHelperService
+docker build . -t walutomat-helper-service && ^
+docker run -d --name WalutomatHelperService -p 49055:80 ^
 --env-file ./../../secrets.list ^
 -e ASPNETCORE_ENVIRONMENT=DockerDev ^
--it service-template
-echo finish service-template
+-it walutomat-helper-service
+echo finish walutomat-helper-service
 pause

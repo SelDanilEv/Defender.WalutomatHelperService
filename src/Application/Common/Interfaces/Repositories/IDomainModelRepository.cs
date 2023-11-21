@@ -1,6 +1,6 @@
-﻿using Defender.ServiceTemplate.Domain.Entities;
+﻿using Defender.WalutomatHelperService.Domain.Entities;
 
-namespace Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
+namespace Defender.WalutomatHelperService.Application.Common.Interfaces.Repositories;
 
 public interface IDomainModelRepository
 {

@@ -1,10 +1,10 @@
 ﻿using Defender.Common.Errors;
 using Defender.Common.Interfaces;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
+using Defender.WalutomatHelperService.Application.Common.Interfaces;
 using FluentValidation;
 using MediatR;
 
-namespace Defender.ServiceTemplate.Application.Modules.Module.Commands;
+namespace Defender.WalutomatHelperService.Application.Modules.Module.Commands;
 
 public record ModuleCommand : IRequest<Unit>
 {

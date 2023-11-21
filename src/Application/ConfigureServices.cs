@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using Defender.Common.Exstension;
-using Defender.ServiceTemplate.Application.Configuration.Exstension;
+using Defender.WalutomatHelperService.Application.Configuration.Exstension;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Defender.ServiceTemplate.Application;
+namespace Defender.WalutomatHelperService.Application;
 
 public static class ConfigureServices
 {

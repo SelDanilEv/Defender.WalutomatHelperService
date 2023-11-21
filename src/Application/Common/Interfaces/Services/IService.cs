@@ -1,4 +1,4 @@
-﻿namespace Defender.ServiceTemplate.Application.Common.Interfaces;
+﻿namespace Defender.WalutomatHelperService.Application.Common.Interfaces;
 
 public interface IService
 {

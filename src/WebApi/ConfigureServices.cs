@@ -20,7 +20,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-namespace Defender.ServiceTemplate.WebUI;
+namespace Defender.WalutomatHelperService.WebUI;
 
 public static class ConfigureServices
 {
@@ -88,8 +88,8 @@ public static class ConfigureServices
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
-                Title = "Service Template",
-                Description = "Service template",
+                Title = "Walutomat Helper Service",  
+                Description = "Service to help automate operations in walutomat (https://panel.walutomat.pl/)",
             });
 
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()

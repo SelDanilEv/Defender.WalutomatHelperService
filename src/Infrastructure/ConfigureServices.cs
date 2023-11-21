@@ -1,19 +1,20 @@
 ﻿using System.Net.Http.Headers;
 using System.Reflection;
+using Defender.Common.Clients.Identity;
 using Defender.Common.Helpers;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
-using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
-using Defender.ServiceTemplate.Application.Common.Interfaces.Wrapper;
-using Defender.ServiceTemplate.Application.Configuration.Options;
-using Defender.ServiceTemplate.Infrastructure.Clients.Service;
-using Defender.ServiceTemplate.Infrastructure.Clients.Service.Generated;
-using Defender.ServiceTemplate.Infrastructure.Repositories.DomainModels;
-using Defender.ServiceTemplate.Infrastructure.Services;
+using Defender.Common.Interfaces;
+using Defender.WalutomatHelperService.Application.Common.Interfaces;
+using Defender.WalutomatHelperService.Application.Common.Interfaces.Repositories;
+using Defender.WalutomatHelperService.Application.Common.Interfaces.Wrapper;
+using Defender.WalutomatHelperService.Application.Configuration.Options;
+using Defender.WalutomatHelperService.Infrastructure.Clients.Service;
+using Defender.WalutomatHelperService.Infrastructure.Repositories.DomainModels;
+using Defender.WalutomatHelperService.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Defender.ServiceTemplate.Infrastructure;
+namespace Defender.WalutomatHelperService.Infrastructure;
 
 public static class ConfigureServices
 {
@@ -49,15 +50,28 @@ public static class ConfigureServices
 
     private static void RegisterApiClients(IServiceCollection services, IConfiguration configuration)
     {
+        services.RegisterIdentityAsServiceClient(
+            (serviceProvider, client) =>
+            {
+                client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<ServiceOptions>>().Value.Url);
+                client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue(
+                    "Bearer",
+                    InternalJwtHelper.GenerateInternalJWT(configuration["JwtTokenIssuer"]));
+            });
 
-        services.AddHttpClient<IServiceClient, ServiceClient>(nameof(ServiceClient), (serviceProvider, client) =>
-        {
-            client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<ServiceOptions>>().Value.Url);
-            client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue(
-                "Bearer",
-                InternalJwtHelper.GenerateInternalJWT(configuration["JwtTokenIssuer"]));
-        });
+        services.RegisterIdentityClient(
+            (serviceProvider, client) =>
+            {
+                client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<ServiceOptions>>().Value.Url);
+
+                var schemaAndToken = serviceProvider.GetRequiredService<IAccountAccessor>().Token?.Split(' ');
+
+                if (schemaAndToken?.Length == 2)
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(schemaAndToken[0], schemaAndToken[1]);
+                }
+            });
     }
 
 }

@@ -1,6 +1,6 @@
 using Defender.Common.Mapping;
 
-namespace Defender.ServiceTemplate.Application.Common.Mappings;
+namespace Defender.WalutomatHelperService.Application.Common.Mappings;
 
 public class MappingProfile : BaseMappingProfile
 {
