@@ -2,4 +2,6 @@
 
 public enum LocalSecret
 {
+    WalutomatApiKey,
+    WalutomatPrivateKey,
 }

@@ -9,17 +9,17 @@ using Defender.WalutomatHelperService.Application.Modules.Module.Commands;
 
 namespace Defender.WalutomatHelperService.WebUI.Controllers.V1;
 
-public class AccountController : BaseApiController
+public class WalutomatController : BaseApiController
 {
-    public AccountController(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+    public WalutomatController(IMediator mediator, IMapper mapper) : base(mediator, mapper)
     {
     }
 
-    [HttpPost("block")]
-    [Auth(Roles.Admin)]
+    [HttpPost("refresh")]
+    //[Auth(Roles.User)]
     [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task BlockUserAsync([FromBody] ModuleCommand command)
+    public async Task RefreshRatesAsync([FromBody] RefreshRatesCommand command)
     {
         await ProcessApiCallAsync(command);
     }
