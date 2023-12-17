@@ -56,6 +56,11 @@ public class WalutomatAPIWrapper : BaseSwaggerWrapper, IWalutomatAPIWrapper
             mappedCurrencyPair,
             1);
 
+        if (lastBestOffes.Errors != null && lastBestOffes.Errors.Any())
+        {
+            throw new ServiceException(ErrorCode.ES_WalutomatIssue);
+        }
+
         result.Ask = decimal.Parse(lastBestOffes?.Result?.Asks?.FirstOrDefault()?.Price!);
         result.Bid = decimal.Parse(lastBestOffes?.Result?.Bids?.FirstOrDefault()?.Price!);
         result.CurrencyPair = Domain.Models.CurrencyPair.FromWalutomatCurrencyPair(currencyPair);

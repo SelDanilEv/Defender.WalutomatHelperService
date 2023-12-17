@@ -37,7 +37,7 @@ public class RateService : IRateService
 
         if (historicalRate != null)
         {
-            await _currencyRateRepository.AddHistoricalRateAsync(historicalRate).ConfigureAwait(false);
+            await _currencyRateRepository.AddHistoricalRateAsync(historicalRate);
         }
     }
 }

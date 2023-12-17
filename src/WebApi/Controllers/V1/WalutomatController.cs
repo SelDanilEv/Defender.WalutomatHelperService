@@ -19,7 +19,7 @@ public class WalutomatController : BaseApiController
     //[Auth(Roles.User)]
     [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task RefreshRatesAsync([FromBody] RefreshRatesCommand command)
+    public async Task RefreshRatesAsync([FromQuery] RefreshRatesCommand command)
     {
         await ProcessApiCallAsync(command);
     }
