@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Defender.Common.Attributes;
-using Defender.Common.Models;
+using Defender.Common.Consts;
 using Defender.WalutomatHelperService.Application.Modules.Module.Commands;
 
 namespace Defender.WalutomatHelperService.WebUI.Controllers.V1;
