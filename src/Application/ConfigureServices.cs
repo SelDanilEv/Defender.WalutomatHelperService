@@ -1,10 +1,9 @@
 ﻿using System.Reflection;
-using Defender.Common.Exstension;
-using Defender.WalutomatHelperService.Application.Configuration.Exstension;
 using FluentValidation;
-using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Defender.WalutomatHelperService.Application.Common.Interfaces;
+using Defender.WalutomatHelperService.Application.Services;
 
 namespace Defender.WalutomatHelperService.Application;
 
@@ -15,6 +14,15 @@ public static class ConfigureServices
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+        services.RegisterServices();
+
+        return services;
+    }
+
+    private static IServiceCollection RegisterServices(this IServiceCollection services)
+    {
+        services.AddTransient<IRateService, RateService>();
 
         return services;
     }

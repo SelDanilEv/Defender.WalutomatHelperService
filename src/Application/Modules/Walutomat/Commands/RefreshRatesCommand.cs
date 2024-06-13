@@ -3,6 +3,7 @@ using Defender.Common.Interfaces;
 using Defender.WalutomatHelperService.Application.Common.Interfaces;
 using Defender.WalutomatHelperService.Domain.Enums;
 using FluentValidation;
+using Defender.Common.Extension;
 using MediatR;
 
 namespace Defender.WalutomatHelperService.Application.Modules.Module.Commands;
@@ -18,7 +19,7 @@ public sealed class RefreshRatesValidator : AbstractValidator<RefreshRatesComman
     public RefreshRatesValidator()
     {
         //RuleFor(s => s.DoModule)
-        //          .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_InvalidRequest));
+        //          .NotEmpty().WithMessage(ErrorCode.VL_InvalidRequest);
     }
 }
 

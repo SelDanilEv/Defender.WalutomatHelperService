@@ -1,9 +1,9 @@
-﻿using Defender.Common.Exstension;
+﻿using Defender.Common.Extension;
 using Defender.WalutomatHelperService.Application.Configuration.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Defender.WalutomatHelperService.Application.Configuration.Exstension;
+namespace Defender.WalutomatHelperService.Application.Configuration.Extension;
 
 public static class ServiceOptionsExtensions
 {

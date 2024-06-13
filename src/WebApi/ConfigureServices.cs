@@ -5,9 +5,9 @@ using System.Text.Json.Serialization;
 using Defender.Common.Enums;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
-using Defender.Common.Exstension;
+using Defender.Common.Extension;
 using Defender.Common.Helpers;
-using Defender.WalutomatHelperService.Application.Configuration.Exstension;
+using Defender.WalutomatHelperService.Application.Configuration.Extension;
 using FluentValidation.AspNetCore;
 using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,7 +21,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProblemDetailsOptions = Hellang.Middleware.ProblemDetails.ProblemDetailsOptions;
 
-namespace Defender.WalutomatHelperService.WebUI;
+namespace Defender.WalutomatHelperService.WebApi;
 
 public static class ConfigureServices
 {

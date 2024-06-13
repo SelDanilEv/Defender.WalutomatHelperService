@@ -1,21 +1,21 @@
 ﻿using System.Globalization;
 
-namespace Defender.WalutomatHelperService.Infrastructure.Helpers;
+namespace Defender.WalutomatHelperService.Application.Helpers;
 
 public class CultureInfoScopeHelper : IDisposable
 {
-    private readonly CultureInfo originalCulture;
+    private readonly CultureInfo _originalCulture;
 
     public CultureInfoScopeHelper(string cultureName)
     {
-        this.originalCulture = CultureInfo.CurrentCulture;
+        _originalCulture = CultureInfo.CurrentCulture;
         CultureInfo.CurrentCulture = new CultureInfo(cultureName);
         CultureInfo.CurrentUICulture = new CultureInfo(cultureName);
     }
 
     public void Dispose()
     {
-        CultureInfo.CurrentCulture = originalCulture;
-        CultureInfo.CurrentUICulture = originalCulture;
+        CultureInfo.CurrentCulture = _originalCulture;
+        CultureInfo.CurrentUICulture = _originalCulture;
     }
 }

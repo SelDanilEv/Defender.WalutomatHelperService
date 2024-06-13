@@ -7,7 +7,7 @@ using Defender.WalutomatHelperService.Domain.Enums;
 using Defender.WalutomatHelperService.Domain.Models;
 
 
-namespace Defender.WalutomatHelperService.Infrastructure.Services;
+namespace Defender.WalutomatHelperService.Application.Services;
 
 public class RateService : IRateService
 {

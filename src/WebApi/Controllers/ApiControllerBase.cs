@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Defender.WalutomatHelperService.WebUI.Controllers;
+namespace Defender.WalutomatHelperService.WebApi.Controllers;
 
 [Route("api/[controller]")]
 public class BaseApiController : ControllerBase

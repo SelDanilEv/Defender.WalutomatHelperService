@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using Defender.Common.DTOs;
 using Defender.Common.Modules.Home.Queries;
 
-namespace Defender.WalutomatHelperService.WebUI.Controllers.V1;
+namespace Defender.WalutomatHelperService.WebApi.Controllers.V1;
 
 public partial class HomeController(
         IMediator mediator,

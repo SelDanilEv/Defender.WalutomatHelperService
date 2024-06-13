@@ -8,10 +8,10 @@ using Defender.WalutomatHelperService.Application.Common.Interfaces;
 using Defender.WalutomatHelperService.Application.Common.Interfaces.Repositories;
 using Defender.WalutomatHelperService.Application.Common.Interfaces.Wrapper;
 using Defender.WalutomatHelperService.Application.Configuration.Options;
+using Defender.WalutomatHelperService.Application.Services;
 using Defender.WalutomatHelperService.Infrastructure.Clients.Walutomat;
 using Defender.WalutomatHelperService.Infrastructure.Clients.Walutomat.Generated;
 using Defender.WalutomatHelperService.Infrastructure.Repositories.DomainModels;
-using Defender.WalutomatHelperService.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -23,8 +23,6 @@ public static class ConfigureServices
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
-        RegisterServices(services);
 
         RegisterRepositories(services);
 
@@ -38,11 +36,6 @@ public static class ConfigureServices
     private static void RegisterClientWrappers(IServiceCollection services)
     {
         services.AddTransient<IWalutomatAPIWrapper, WalutomatAPIWrapper>();
-    }
-
-    private static void RegisterServices(IServiceCollection services)
-    {
-        services.AddTransient<IRateService, RateService>();
     }
 
     private static void RegisterRepositories(IServiceCollection services)

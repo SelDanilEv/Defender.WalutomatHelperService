@@ -7,7 +7,7 @@ using Defender.Common.Attributes;
 using Defender.Common.Consts;
 using Defender.WalutomatHelperService.Application.Modules.Module.Commands;
 
-namespace Defender.WalutomatHelperService.WebUI.Controllers.V1;
+namespace Defender.WalutomatHelperService.WebApi.Controllers.V1;
 
 public class WalutomatController : BaseApiController
 {

@@ -1,31 +1,21 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using AutoMapper;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
 using Defender.Common.Wrapper;
 using Defender.WalutomatHelperService.Application.Common.Interfaces.Wrapper;
+using Defender.WalutomatHelperService.Application.Helpers;
+using Defender.WalutomatHelperService.Application.Helpers.LocalSecretHelper;
 using Defender.WalutomatHelperService.Domain.Entities;
 using Defender.WalutomatHelperService.Domain.Enums;
 using Defender.WalutomatHelperService.Infrastructure.Clients.Walutomat.Generated;
-using Defender.WalutomatHelperService.Infrastructure.Helpers;
-using Defender.WalutomatHelperService.Infrastructure.Helpers.LocalSecretHelper;
 using Defender.WalutomatHelperService.Infrastructure.Mappings;
 
 namespace Defender.WalutomatHelperService.Infrastructure.Clients.Walutomat;
 
-public class WalutomatAPIWrapper : BaseSwaggerWrapper, IWalutomatAPIWrapper
+public class WalutomatAPIWrapper(
+    IWalutomatClient walutomatClient) : BaseSwaggerWrapper, IWalutomatAPIWrapper
 {
-    private readonly IMapper _mapper;
-    private readonly IWalutomatClient _walutomatClient;
-
-    public WalutomatAPIWrapper(
-        IWalutomatClient walutomatClient,
-        IMapper mapper)
-    {
-        _walutomatClient = walutomatClient;
-        _mapper = mapper;
-    }
 
     public async Task<CurrencyHistoricalRate> GetLastOfferDetails(WalutomatCurrencyPair currencyPair)
     {
@@ -48,9 +38,9 @@ public class WalutomatAPIWrapper : BaseSwaggerWrapper, IWalutomatAPIWrapper
             $"/api/v2.0.0/market_fx/best_offers/detailed?currencyPair={currencyPair}&itemLimit=1",
             body);
 
-        _walutomatClient.SetApiKey(await LocalSecretsHelper.GetSecretAsync(LocalSecret.WalutomatApiKey));
+        walutomatClient.SetApiKey(await LocalSecretsHelper.GetSecretAsync(LocalSecret.WalutomatApiKey));
 
-        var lastBestOffes = await _walutomatClient.GetBestOffersDetailedAsync(
+        var lastBestOffes = await walutomatClient.GetBestOffersDetailedAsync(
             signature,
             result.Date.Value,
             mappedCurrencyPair,
